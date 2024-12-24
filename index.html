@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recetario Mágico</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(to bottom, #ffefba, #ffc3a0);
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      background: #ff8c94;
+      color: white;
+    }
+
+    h1 {
+      font-size: 2.5em;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    .recipe {
+      background: #fff5e6;
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      display: none; /* Oculto por defecto */
+    }
+
+    .recipe-title {
+      font-size: 1.8em;
+      text-align: center;
+      color: #ff6f61;
+    }
+
+    .ingredients, .instructions {
+      margin-top: 15px;
+    }
+
+    select {
+      display: block;
+      margin: 20px auto;
+      padding: 10px;
+      font-size: 1.2em;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      font-size: 1.2em;
+      color: white;
+      background: #ff6f61;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>✨ Recetario Mágico ✨</h1>
+  </header>
+
+  <main>
+    <select id="recipe-select">
+      <option value="cookies">🍪 Galletas de Chocolate</option>
+      <option value="brownie">🍫 Brownie de Chocolate con Nueces</option>
+      <option value="capuccino">☕ Capuchino de Café</option>
+    </select>
+
+    <button id="open-recipe">Abrir Receta Mágica</button>
+
+    <section class="recipe">
+      <h2 class="recipe-title">🍪 Galletas de Chocolate</h2>
+      <div class="ingredients">
+        <h3>Ingredientes:</h3>
+        <ul>
+          <li>1 taza generosa de harina leudante (o harina común + polvo de hornear)</li>
+          <li>1/2 taza de azúcar negra</li>
+          <li>1/2 taza de azúcar común</li>
+          <li>1/2 taza de chips de chocolate</li>
+          <li>1 huevo</li>
+          <li>60g de manteca</li>
+          <li>1 cdita. de esencia de vainilla</li>
+          <li>1/2 cdita. de canela en polvo</li>
+          <li>1 pizca de sal</li>
+        </ul>
+      </div>
+      <div class="instructions">
+        <h3>Pasos a seguir:</h3>
+        <p>1. Mezclar la manteca blanda con los dos tipos de azúcar.</p>
+        <p>2. Agregar el huevo e integrar.</p>
+        <p>3. Agregar la esencia de vainilla, la canela y la harina. Quedará una pasta.</p>
+        <p>4. Incorporar por último los chips de chocolate y revolver.</p>
+        <p>5. Poner de a cucharaditas en una fuente de horno, bien separadas, porque crecerán.</p>
+        <p>6. Hornear unos 15 minutos a fuego mínimo. Cuando las saquemos estarán blandas pero al enfriarse se endurecen.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Hecho con 💖 para cocineros mágicos</p>
+  </footer>
+
+  <script>
+    const recipes = {
+      cookies: {
+        title: "🍪 Galletas de Chocolate",
+        ingredients: `
+          <li>1 taza generosa de harina leudante (o harina común + polvo de hornear)</li>
+          <li>1/2 taza de azúcar negra</li>
+          <li>1/2 taza de azúcar común</li>
+          <li>1/2 taza de chips de chocolate</li>
+          <li>1 huevo</li>
+          <li>60g de manteca</li>
+          <li>1 cdita. de esencia de vainilla</li>
+          <li>1/2 cdita. de canela en polvo</li>
+          <li>1 pizca de sal</li>
+        `,
+        instructions: `
+          <p>1. Mezclar la manteca blanda con los dos tipos de azúcar.</p>
+          <p>2. Agregar el huevo e integrar.</p>
+          <p>3. Agregar la esencia de vainilla, la canela y la harina. Quedará una pasta.</p>
+          <p>4. Incorporar por último los chips de chocolate y revolver.</p>
+          <p>5. Poner de a cucharaditas en una fuente de horno, bien separadas, porque crecerán.</p>
+          <p>6. Hornear unos 15 minutos a fuego mínimo. Cuando las saquemos estarán blandas pero al enfriarse se endurecen.</p>
+        `
+      },
+      brownie: {
+        title: "🍫 Brownie de Chocolate con Nueces",
+        ingredients: `
+          <li>100g de manteca</li>
+          <li>150g de chocolate</li>
+          <li>2 huevos</li>
+          <li>1 taza de azúcar</li>
+          <li>1/2 taza de nueces picadas</li>
+          <li>100g de harina</li>
+        `,
+        instructions: `
+          <p>1. Colocar la manteca y el chocolate picados en una sartén a fuego bajo. Tapar y dejar 5 minutos.</p>
+          <p>2. Retirar del fuego y revolver hasta que esté todo derretido e integrado.</p>
+          <p>3. Batir los huevos con el azúcar hasta que queden bien blancos.</p>
+          <p>4. Agregar el chocolate derretido y batir hasta integrar.</p>
+          <p>5. Sumar las nueces y la harina tamizada en dos partes.</p>
+          <p>6. Colocar en un molde y hornear a 200-220°C por 20 minutos.</p>
+        `
+      },
+      capuccino: {
+        title: "☕ Capuchino de Café",
+        ingredients: `
+          <li>1 taza de café espresso recién preparado (aproximadamente 30 ml)</li>
+          <li>1 taza de leche (aproximadamente 240 ml)</li>
+          <li>Azúcar a gusto</li>
+        `,
+        instructions: `
+          <p>1. Utilizar una máquina de espresso o una cafetera para preparar un espresso fuerte.</p>
+          <p>2. Verter la leche en una cacerola y calentar a fuego bajo, evitando que se forme nata.</p>
+          <p>3. Crear espuma de leche usando un vaporizador o batiendo leche caliente vigorosamente.</p>
+          <p>4. Verter el espresso caliente en una taza y luego agregar la leche caliente.</p>
+          <p>5. Endulzar a gusto y espolvorear cacao en polvo, canela o nuez moscada por encima.</p>
+          <p>6. Añadir la espuma de leche a la parte superior y servir caliente.</p>
+        `
+      }
+    };
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const select = document.getElementById("recipe-select");
+      const openButton = document.getElementById("open-recipe");
+      const recipeSection = document.querySelector(".recipe");
+      const title = document.querySelector(".recipe-title");
+      const ingredients = document.querySelector(".ingredients ul");
+      const instructions = document.querySelector(".instructions");
+
+      openButton.addEventListener("click", () => {
+        const selectedRecipe = recipes[select.value];
+        title.textContent = selectedRecipe.title;
+        ingredients.innerHTML = selectedRecipe.ingredients;
+        instructions.innerHTML = `<h3>Pasos a seguir:</h3>` + selectedRecipe.instructions;
+        recipeSection.style.display = "block";
+      });
+    });
+  </script>
+</body>
+</html>
